@@ -5,8 +5,7 @@
 .header-container {
   display: flex;
   justify-content: space-around;
-  border: 1px solid black;
-  height: 8vh;
+  height: 9vh;
 
   font-size: 2em;
 }
@@ -17,15 +16,10 @@
 
 .footer-container {
   display: flex;
-  /* justify-content: space-around; */
-  border: 1px solid black;
   height: 8vh;
-
   font-size: 2em;
 }
-/* .footer-container > * {
-  border: 1px solid black;
-} */
+
 .footer-p1 {
   margin-left: 5%;
 }
