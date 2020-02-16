@@ -1,39 +1,26 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import { flexbox } from "@material-ui/system";
-import imgBackground from "./water3.jpg";
+import LotRetrievalComponent from "../../../lotProcessor/LotRetrievalComponent.js";
 
-const useStyles = makeStyles({
-  card: {
-    maxWidth: flexbox
-  },
-  media: {
-    height: 650
+class ThirdSlidePlaceholder extends LotRetrievalComponent {
+  loopArray = () => {
+    let newArray = [];
+
+    this.state.lots.forEach(el => {
+      return newArray.push([
+        el.data().currentBidderTable,
+        el.data().currentBid
+      ]);
+    });
+    return newArray;
+  };
+  render() {
+    this.loopArray();
+    return (
+      <div>
+        <h1>Slide Three</h1>
+      </div>
+    );
   }
-});
-
-export default function ThirdSlidePlaceholder() {
-  const classes = useStyles();
-
-  return (
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={imgBackground}
-          title='Contemplative Reptile'
-        />
-        <CardContent>
-          <Typography variant='body2' color='textSecondary' component='p'>
-            Hello From Slide Three Placeholder
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-  );
 }
+
+export default ThirdSlidePlaceholder;

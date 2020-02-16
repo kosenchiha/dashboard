@@ -9,7 +9,7 @@ class SecondSlide extends Component {
       countries: []
     };
   }
-  
+
   componentDidMount() {
     let countries = getCountries();
     countries.get().then(docs => {
@@ -19,32 +19,38 @@ class SecondSlide extends Component {
           .getDownloadURL()
           .then(url => {
             this.setState(state => ({
-              countries: state.countries.concat(
-                {
-                  name: data.name,
-                  first: data.firstParagraph,
-                  second: data.secondParagraph,
-                  pic: url
-                }
-              )
+              countries: state.countries.concat({
+                name: data.name,
+                caption: data.caption,
+                credit: data.credit,
+                info: data.info,
+                pic: url
+              })
             }));
-          })
+          });
       });
-    })
+    });
   }
 
-  getData = (current) => {
+  getData = current => {
     let length = this.state.countries.length;
     if (length === 0) {
       return ["", "Hello"];
     }
     let country = this.state.countries[current % length];
-    return [country.pic, country.first];
-  }
+    return [country.pic, country.caption, country.credit, country.info];
+  };
 
   render() {
-    let [pic, text] = this.getData(this.props.current);
-    return <SecondSlideInformation picture={pic} text={text} />
+    let [pic, caption, credit, info] = this.getData(this.props.current);
+    return (
+      <SecondSlideInformation
+        picture={pic}
+        caption={caption}
+        credit={credit}
+        info={info}
+      />
+    );
   }
 }
 

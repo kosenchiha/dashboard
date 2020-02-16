@@ -49,18 +49,18 @@ class Totaliser extends Component {
 
   render() {
     return (
-      <div style={{ display: "flex" }} className="Background">
-        <div className="containerTotaliser">
+      <div style={{ display: "flex" }} className='Background'>
+        <div className='containerTotaliser'>
           {this.state.showingConfetti && (
             <Confetti
-              numberOfPieces="600"
-              tweenDuration="5000"
-              initialVelocityY="50"
+              numberOfPieces='600'
+              tweenDuration='5000'
+              initialVelocityY='50'
             />
           )}
           <div>
-            <h1 className="text"> Total raised so far: </h1>
-            <img src={waterpump1} alt="water pump" className="water_pump" />
+            <h1 className='text'> Total raised so far: </h1>
+            <img src={waterpump1} alt='water pump' className='water_pump' />
             <Spring
               from={{ top: "45%" }}
               to={{ top: "55%" }}
@@ -70,9 +70,9 @@ class Totaliser extends Component {
               {props => (
                 <img
                   style={{ top: props.top }}
-                  className="droplet"
+                  className='droplet'
                   src={droplet}
-                  alt="Droplet"
+                  alt='Droplet'
                 />
               )}
             </Spring>
@@ -80,12 +80,12 @@ class Totaliser extends Component {
           <div>
             <Spring from={{ number: 0 }} to={{ number: this.state.total }}>
               {props => (
-                <h1 className="totalNumber">£{props.number.toFixed()}</h1>
+                <h1 className='totalNumber'>£{props.number.toFixed()}</h1>
               )}
             </Spring>
           </div>
           <div>
-            <img src={Jerrycan} className="jerrycan" />
+            <img src={Jerrycan} className='jerrycan' />
           </div>
         </div>
       </div>
