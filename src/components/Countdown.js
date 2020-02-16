@@ -25,12 +25,8 @@ class Countdown extends Component {
   }
 
   getTimeLeft = props => {
-    //console.log("in getTimeLeft", this.props.endTime, "state", this.state);
     if (this.props.endTime !== null) {
       let endTime = this.props.endTime;
-      console.log("new Date() >= endTime", new Date() >= endTime);
-      console.log("new Date()", new Date());
-      console.log("endTime", endTime);
       if (new Date() >= endTime) {
         if (this.state.finished === true) {
           console.log("break in ");
@@ -52,32 +48,27 @@ class Countdown extends Component {
       this.setState({ finished: false });
 
       let i = endTime.getTime() - new Date().getTime();
-      console.log("let i=", i);
       let delta = Math.abs(i) / 1000;
 
-      let days = Math.floor(delta / 86400);
-      delta -= days * 86400;
-      let hours = Math.floor(delta / 3600) % 24;
+      let hours = Math.floor(delta / 3600);
       delta -= hours * 3600;
       let minutes = Math.floor(delta / 60) % 60;
       delta -= minutes * 60;
       let seconds = Math.round(delta % 60);
 
       this.setState({
-        diffInDays: days,
         diffInHours: hours,
-        diffInMins: minutes,
-        diffInSecs: seconds
+        diffInMins: ("0" + minutes).slice(-2),
+        diffInSecs: ("0" + seconds).slice(-2)
       });
     }
   };
 
   render() {
-    console.log(this.props.endTime);
     return (
       <div>
         <p>
-          {this.state.diffInDays}d:{this.state.diffInHours}h:
+          {this.state.diffInHours}h:
           {this.state.diffInMins}m:
           {this.state.diffInSecs}s
         </p>
