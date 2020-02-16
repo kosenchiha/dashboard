@@ -32,13 +32,10 @@ class Header extends Component {
         date = snapshot.data().endTime;
       }
 
-      this.setState(
-        {
-          endTime: getDateFromSeconds(date),
-          ready: true
-        },
-        () => console.log(this.state.endTime)
-      );
+      this.setState({
+        endTime: getDateFromSeconds(date),
+        ready: true
+      });
     });
   };
 

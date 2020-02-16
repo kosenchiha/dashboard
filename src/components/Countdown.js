@@ -14,9 +14,7 @@ class Countdown extends Component {
   }
 
   componentDidMount() {
-    console.log("CountdownDidmount");
     let intervalId = setInterval(this.getTimeLeft, 1000);
-    // store intervalId in the state so it can be accessed later:
     this.setState({ intervalId: intervalId });
   }
 
@@ -29,7 +27,6 @@ class Countdown extends Component {
       let endTime = this.props.endTime;
       if (new Date() >= endTime) {
         if (this.state.finished === true) {
-          console.log("break in ");
           return;
         }
 
