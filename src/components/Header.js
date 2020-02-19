@@ -18,7 +18,6 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    console.log("header did mount");
     this.setState({ ready: false });
     this.getEndDate();
   }

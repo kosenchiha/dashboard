@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import "./countdown.css";
 
 class Countdown extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      diffInDays: 0,
       diffInHours: 0,
       diffInMins: 0,
       diffInSecs: 0,
@@ -31,7 +31,6 @@ class Countdown extends Component {
         }
 
         this.setState({
-          diffInDays: 0,
           diffInHours: 0,
           diffInMins: 0,
           diffInSecs: 0
@@ -54,7 +53,7 @@ class Countdown extends Component {
       let seconds = Math.round(delta % 60);
 
       this.setState({
-        diffInHours: hours,
+        diffInHours: ("0" + hours).slice(-2),
         diffInMins: ("0" + minutes).slice(-2),
         diffInSecs: ("0" + seconds).slice(-2)
       });
@@ -63,12 +62,16 @@ class Countdown extends Component {
 
   render() {
     return (
-      <div>
-        <p>
-          {this.state.diffInHours}h:
-          {this.state.diffInMins}m:
-          {this.state.diffInSecs}s
-        </p>
+      <div class="parent">
+        <div class="div1"> Auction Ends In</div>
+        <div class="div2"> {this.state.diffInHours}</div>
+        <div class="div3">: </div>
+        <div class="div4"> {this.state.diffInMins}</div>
+        <div class="div5"> :</div>
+        <div class="div6"> {this.state.diffInSecs} </div>
+        <div class="div7">Hours </div>
+        <div class="div8">Mins </div>
+        <div class="div9">Secs </div>
       </div>
     );
   }
